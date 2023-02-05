@@ -22,9 +22,9 @@ export default ({ search, onSearch }) => {
     return (
         <Container>
             <Logo src='/assets/logo.png' />
-            <SearchInput 
-                type="text" 
-                placeholder="Digite um produto..." 
+            <SearchInput
+                type="text"
+                placeholder="Digite um produto..."
                 active={inputActive}
                 onFocus={handlerInputFocus}
                 onBlur={handlerInputBlur}
@@ -32,5 +32,5 @@ export default ({ search, onSearch }) => {
                 onChange={handleChange}
             />
         </Container>
-        )
+    )
 }

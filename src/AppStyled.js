@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 
+
 export const Container = styled.div`
 height: 100vh;
 display: flex;
@@ -20,4 +21,5 @@ display: flex;
 background-color: #00980D;
 background-image: url('/assets/bg.png');
 flex: 1;
+overflow-y: auto;
 `
