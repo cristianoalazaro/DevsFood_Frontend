@@ -14,6 +14,9 @@ import { Container,
 import CategoryItem from '../../components/CategoryItem'
 import api from '../../api'
 import ProductItem from '../../components/ProductItem';
+import Modal from '../../components/Modal';
+
+let searchTimer = null;
 
 export default () => {
     const history = useHistory();
@@ -23,8 +26,11 @@ export default () => {
     const [products, setProducts] = useState([])
     const [totalPages, setTotalPages] = useState(0)
 
+    const [modalStatus, setModalStatus] = useState(false)
+
     const [activeCategory, setActiveCategory] = useState(0)
     const [activePage, setActivePage] = useState(0)
+    const [activeSearch, setActiveSearch] = useState('')
 
     useEffect(() => {
         const getCategories = async () => {
@@ -40,12 +46,19 @@ export default () => {
     useEffect(() => {
         setProducts([])
         getProducts()
-    }, [activeCategory, activePage])
+    }, [activeCategory, activePage, activeSearch])
+
+    useEffect(() => {
+        clearTimeout(searchTimer);
+
+        searchTimer = setTimeout(() => {
+            setActiveSearch(headerSearch)
+        },2000)
+    },[headerSearch])
 
     const getProducts = async () => {
-        const prods = await api.getProducts();
+        const prods = await api.getProducts(activeCategory, activePage, activeSearch);
         if (prods.error == ''){
-            console.log(prods.result.pages)
             setProducts(prods.result.data)
             setTotalPages(prods.result.pages)
             setActivePage(prods.result.page)
@@ -106,6 +119,10 @@ export default () => {
                     ))}
                 </ProductPaginationArea>
             }
+            
+            <Modal status={modalStatus} setStatus={setModalStatus}>
+                Conteúdo do modal
+            </Modal>
         </Container>
     );
 }

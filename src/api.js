@@ -13,9 +13,15 @@ export default {
         return res.data;
     },
 
-    getProducts: async () => {
+    getProducts: async (category, page, search) => {
         //GET Products ([search, page, category])
-        const res = await api('/products')
+        const res = await api.get('/products', {
+            params: {
+                category,
+                page,
+                search
+            }
+        })
         return res.data;
     }
 }
