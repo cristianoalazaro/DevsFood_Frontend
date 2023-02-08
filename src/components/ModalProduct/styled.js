@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-width: 740px;
-padding: 10px;
+width: 650px;
+padding: 20px;
 `
 
 export const ProductArea = styled.div`
@@ -14,6 +14,7 @@ export const ProductButtons = styled.div`
 margin-top: 10px;
 display: flex;
 justify-content: flex-end;
+align-items: flex-end;
 `
 
 export const ProductPhoto = styled.img`
@@ -35,7 +36,8 @@ height: 50px;
 
 export const ProductQuantityArea = styled.div`
 height: 50px;
-background-color: #0000FF;
+display: flex;
+justify-content: space-between;
 `
 
 export const ProductName = styled.div`
@@ -52,9 +54,35 @@ border: 0;
 background-color: #073C07;
 color: #FFF;
 box-shadow: 4px 5px 0px #999;
-font-size: 22px;
+font-size: ${props => props.small ? '13px' : '22px'};
 font-weight: bold;
-padding: 10px 20px;
+padding: ${props => props.small ? '5px 10px' : '10px 20px'};
 margin-left: 10px;
 border-radius: 5px;
+cursor: pointer;
+`
+
+export const ProductQuantity = styled.div`
+display: flex;
+align-items: center;
+background-color: #073C07;
+border-radius: 5px;
+`
+
+export const ProductPrice = styled.div`
+font-size: 30px;
+font-weight: bold;
+`
+
+export const ProductQtImage = styled.img`
+width: 24px;
+height: auto;
+margin: 0px 10px;
+cursor: pointer;
+`
+
+export const ProductQtText = styled.div`
+font-size: 25px;
+font-weight: bold;
+color: #FFF;
 `
