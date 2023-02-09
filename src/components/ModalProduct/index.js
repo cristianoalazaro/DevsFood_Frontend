@@ -18,6 +18,8 @@ import { Container,
     } from './styled'
 
 export default ({ data, setStatus }) => {
+    const dispatch = useDispatch()
+
     const [qt, setQt] = useState(1);
 
     useEffect(() => {
@@ -41,7 +43,10 @@ export default ({ data, setStatus }) => {
         //juntar as informações
         //enviar para o reducer
         //fechar o modal
-
+        dispatch({
+            type: 'ADD_PRODUCT',
+            payload: { data, qt }
+        })
         setStatus(false)
     }
 
