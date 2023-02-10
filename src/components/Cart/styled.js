@@ -36,6 +36,7 @@ width: 20px;
 export const CartBody = styled.div`
 display: ${props => props.show ? 'block' : 'none'};
 color: #FFF;
+transition-delay: 1s;
 `
 
 export const ProductsArea = styled.div`
@@ -68,5 +69,18 @@ font-size: 13px;
 `
 
 export const ProductsQuantityArea = styled.div`
+display: flex;
+align-items: center;
+`
 
+export const ProductsQtIcon = styled.img`
+width: 13px;
+height: auto;
+cursor: pointer
+`
+
+export const ProductsQtText = styled.div`
+margin: 0 5px;
+font-size: 13px;
+font-weight: bold;
 `
